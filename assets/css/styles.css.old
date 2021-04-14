@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 1em;
+    overflow: auto;
+    background-color: darkorange;
+}
+
+.nav {
+    display: inline-flex;
+    justify-content: space-between;
+    background-color: aqua;
+}
+
+.nav li {
+    list-style-type: none;
+    display: inline;
+}
+
+.html-title {
+    background-color: pink;
+}
+
+.html-chapter {
+    background-color: white;
+}
+
+.html-container {
+    background-color: chartreuse;
+    height: 80vh;
+    display: inline-flex;
+}
+
+.content {
+    background-color: chocolate;
+    /* overflow-y: scroll;
+    direction: rtl; */
+}
+
+.content ol {
+    background-color: red;
+    padding: 5px;
+    text-align: center;
+}
+
+.content li {
+    list-style-type: none;
+ }
+
+.content code {
+    background-color: darkgray;
+}
+
+.index-container {
+    background-color: darkmagenta;
+}
+

@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    display: inline-flex;
+    justify-content: space-between;
+    background-color: aqua;
+}
+
+.nav li {
+    list-style-type: none;
+    display: inline;
+}
