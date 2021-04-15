@@ -44,8 +44,9 @@ $_SESSION['login'] = '';
                                 echo "<li><a class='nav-link' href='css.php'>CSS</a></li>";
                                 echo "<li><a class='nav-link' href='javascript.php'>Javascript</a></li>";
                                 echo "<li><a class='nav-link' href='jquery.php'>JQuery</a></li>";
+                                echo "<li><a class='nav-link' href='sql.php'>SQL</a></li>";
                                 echo "<li><a class='nav-link' href='php.php'>PHP</a></li>";
-                            
+                                echo "<li><a class='nav-link' href='ajax.php'>Ajax</a></li>";
                             } else {
                                 echo "<li><a class='nav-link' href='login.php'>Se connecter</a></li>";
                                 echo "<li><a class='nav-link' href='registrer.php'>Créer un compte</a></li>";
