@@ -1,9 +1,6 @@
 <?php
 session_start();
-//$_SESSION['role'] = 'user';
-//$_SESSION['login'] = 'weltrusten';
-$_SESSION['role'] = '';
-$_SESSION['login'] = '';
+
 
 ?>
 <!DOCTYPE html>
@@ -13,7 +10,9 @@ $_SESSION['login'] = '';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/cyborg/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="./assets/js/main.js"></script>
@@ -39,7 +38,7 @@ $_SESSION['login'] = '';
                                 <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <?php 
-                            if($_SESSION['login'] !== "") {
+                            if($_SESSION['role'] === "role_user" || $_SESSION['role'] === "role_admin") {
                                 echo "<li><a class='nav-link' href='html.php'>HTML</a></li>";
                                 echo "<li><a class='nav-link' href='css.php'>CSS</a></li>";
                                 echo "<li><a class='nav-link' href='javascript.php'>Javascript</a></li>";
@@ -54,6 +53,13 @@ $_SESSION['login'] = '';
                             ?>
                         </ul>
                     </div>
+                    <?php 
+                    if(!empty($_SESSION['login'])) {
+                        echo "Welcome ".$_SESSION['login'];
+                    } else {
+                        echo "No account yet";
+                    }
+                    ?>
                 </nav>
             </div>
         </div>

@@ -1,25 +1,60 @@
 $(document).ready(function () {
+
     console.log("home.js is loaded");
 
+    let i = 0;
+    images = Array(
+        "assets/img/jumbo-img-one.png",
+        "assets/img/jumbo-img-two.png",
+        "assets/img/jumbo-img-three.png"
+    );
+
+    function diaporama() {
+        console.log("Hello my friend");
+
+        $(".jumbotron img").fadeOut(3000, function () {
+            console.log("inside fadeOut");
+            $(".jumbotron").attr("src", images[i]);
+            console.log(images[i]);
+            $(".jumbotron img").fadeIn(10000, function () {
+                diaporama();
+                i++;
+                if (i === images.length) {
+                    i = 0;
+                } else {}
+            });
+        });
+    }
+
+
     function diapo() {
-        let diapoArray = ['../img/jumbo-img-one.png',
-        '../img/jumbo-img-two.png',
-        '../img/jumbo-img-three.png'];
-        let jumbo = document.getElementById('jumbo');
-        console.log("Before timeout");
+        console.log("inside diapo()");
+
+        url = Array(
+            "assets/img/jumbo-img-one.png",
+            "assets/img/jumbo-img-two.png",
+            "assets/img/jumbo-img-three.png"
+        );
+
         setTimeout(() => {
-            console.log("Inside timeout...");
-            for(let i = 0; i < diapoArray.length; i++) {
-                console.log(diapoArray[i]);
-                let styleDiapo = jumbo.style.backgroundImage = "url('" + diapoArray[i] + "');";
-                console.log(styleDiapo);
-            }
-        }, 5000);
+            $(".jumbotron").fadeOut(3000, function () {
+                console.log("inside fadeout");
+                console.log($(".jumbotron").css("background-image", "url(" + url[i] + ")"));
+                $(this).fadeIn(3000, function () {
+                    console.log("Inside fadein();");
+                    diapo();
+                    i++;
+                    if (i === url.length) {
+                        i = 0;
+                    } else {}
+                });
+            });
+        }, 10000);
     }
 
     function toggleCards() {
         console.log("Inside toggleCards");
-        let cards = document.getElementById('cards'); 
+        let cards = document.getElementById("cards");
         cards.style.visibility = "visible";
     }
 
@@ -27,7 +62,9 @@ $(document).ready(function () {
         console.log("it worked my friend");
         toggleCards();
     });
-    
+
     console.log("Launching diapo()");
-    diapo();
+    //diaporama();
+    //diapo();
+
 });
