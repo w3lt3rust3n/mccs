@@ -65,6 +65,6 @@ $(document).ready(function () {
 
     console.log("Launching diapo()");
     //diaporama();
-    //diapo();
+    diapo();
 
 });

@@ -32,17 +32,17 @@ if (!empty($_POST)) {
     $pwd = checkInput("regPasswordInput", "Le champ Mot de passe est vide");
     $email = checkInput("regEmailInput", "Le champ email est vide");
     // is_int() me permet de determiner si ma var est bien de type int
-           
-        if(!$result){
-            $rq = "INSERT INTO user(login,password,email)
+
+    if (!$result) {
+        $rq = "INSERT INTO user(login,password,email)
             VALUES
             (:regLoginInput,:regPasswordInput,:regEmailInput";
-            $query = $pdo->prepare($rq);
-            $query->bindValue(':regLoginInput', $login, PDO::PARAM_STR);
-            $query->bindValue(':regPasswordInput', $pwd, PDO::PARAM_STR);
-            $query->bindValue(':regEmailInput', $email, PDO::PARAM_STR);
-            
-            $query->execute();
+        $query = $pdo->prepare($rq);
+        $query->bindValue(':regLoginInput', $login, PDO::PARAM_STR);
+        $query->bindValue(':regPasswordInput', $pwd, PDO::PARAM_STR);
+        $query->bindValue(':regEmailInput', $email, PDO::PARAM_STR);
+
+        $query->execute();
     } else {
         // erreur utilisateur
         $erreur = serialize($erreur);

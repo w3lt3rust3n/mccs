@@ -7,15 +7,16 @@ function insertUser($tbUser)
     global $pdo;
     $rq = "INSERT INTO user(role,login,pwd,email)
             VALUES
-            (:login,:pwd,:email)";
+            (:role,:login,:pwd,:email)";
     $query = $pdo->prepare($rq);
-    
+    $query->bindValue(':role', 'role_user', PDO::PARAM_STR);
     $query->bindValue(':login', $tbUser['login'], PDO::PARAM_STR);
     $query->bindValue(':pwd', $tbUser['pwd'], PDO::PARAM_STR);
     $query->bindValue(':email', $tbUser['email'], PDO::PARAM_STR);
     
     $query->execute();
 }
+
 function selectUserBy($field, $value, $type)
 {
     global $pdo;
@@ -26,6 +27,7 @@ function selectUserBy($field, $value, $type)
     $result = $query->fetch();
     return $result;
 }
+
 function selectUserForLogin($login, $pwd)
 {
     global $pdo;
@@ -56,17 +58,17 @@ function protectUrl($role)
         case 'role_admin':
             if (!empty($_SESSION['role'])) {
                 if ($_SESSION['role'] !== $role) {
-                    header("Location:home.php");
+                    header("Location:index.php");
                     die;
                 }
             } else {
-                header("Location:home.php");
+                header("Location:index.php");
                 die;
             }
             break;
         case 'role_user':
             if (empty($_SESSION['role'])) {
-                header("Location:home.php");
+                header("Location:index.php");
                 die;
             }
             break;
@@ -86,21 +88,6 @@ function verifInput($input, $txtErreur)
     if (strlen($_POST[$input]) > 0) {
         // trim() supprime tous les caractères invisibles de ma chaine
         return trim(strip_tags($_POST[$input]));
-    } else {
-        // j'ajoute une nouvelle erreur à mon tableau en cas de champ vide
-        $erreur[$input] = $txtErreur;
-    }
-}
-function verifNum($input, $txtErreur, $nb)
-{
-    // pour pouvoir utiliser mon tableau d'erreur à l'interieur de ma fonction
-    // je le déclare en global
-    global $erreur;
-    // mon patern ne comprendra que des chiffres de 0 à 9 et $nb caractères
-    $patern = "#[0-9]{" . $nb . "}#";
-    if (preg_match($patern, $_POST[$input])) {
-        // je m'assure que la valeur renvoyée sera bien int pour ma requete avec intval
-        return intval($_POST[$input]); // ici 0235000000 devient 235000000
     } else {
         // j'ajoute une nouvelle erreur à mon tableau en cas de champ vide
         $erreur[$input] = $txtErreur;

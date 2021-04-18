@@ -1,8 +1,8 @@
 <?php
-session_start();
+//session_start();
 require_once("./inc/registerFn.php");
 include("header.php");
-require_once("./inc/pdo.php"); //ne sert à rien déjà appelé dans fonctions.php
+
 // je teste l'existance de données post
 $erreur = [];
 if (!empty($_POST)) {
