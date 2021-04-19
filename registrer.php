@@ -1,16 +1,15 @@
 <?php
-//session_start();
+
 require_once("./inc/registerFn.php");
+//require_once("session.php");
+include("session.php");
 include("header.php");
+initSession();
 
 // je teste l'existance de données post
 $erreur = [];
 if (!empty($_POST)) {
-    // autre methode pour traiter mes entrées
-    /* for($i=0;$i<count($_POST);$i++){
-         $_POST[$i] = verifInput("nom", "Vous n'avez pas rempli le champ nom.");
-   } */
-    
+    var_dump($_POST);
     $_POST['login'] = verifInput("login", "Vous n'avez pas rempli le champ login.");
     $_POST['pwd'] = verifInput("pwd", "Vous n'avez pas rempli le champ pwd.");
     $_POST['pwd2'] = verifInput("pwd2", "Vous n'avez pas rempli le champ pwd2.");
@@ -29,16 +28,18 @@ if (!empty($_POST)) {
     if (selectUserBy("email", $_POST['email'], PDO::PARAM_STR)) {
         $erreur['email'] = "Cet email est déjà enregitré!";
     }
-    //var_dump($erreur);
+    var_dump($erreur);
     if (count($erreur) === 0) {
-
-        //$hashPwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
         $_POST['pwd'] = password_hash($_POST['pwd'], PASSWORD_ARGON2ID);
         insertUser($_POST);
         // mon utilisateur est bien enregistré
         // je rentre ses informations dans la $_SESSION
         $_SESSION['login'] = $_POST['login'];
         $_SESSION['role'] = "role_user";
+        header("Location:account.php");
+        die();
+    } else {
+        echo "DANGER"."<br>";
     }
 }
 ?>
@@ -62,9 +63,9 @@ if (!empty($_POST)) {
             Bonus show hide password jQuery :(
             https://codepen.io/Sohail05/pen/yOpeBm 
         -->
-        <input type="text" name="pwd" id="pwd" placeholder="Mot de Passe">
+        <input type="password" name="pwd" id="pwd" placeholder="Mot de Passe">
         <div class="inputError"></div>
-        <input type="text" name="pwd2" id="pwd2" placeholder="Confirmer le mot de passe">
+        <input type="password" name="pwd2" id="pwd2" placeholder="Confirmer le mot de passe">
         <div class="inputError"></div>
         <input type="email" name="email" id="email" placeholder="Email">
         <div class="inputError"></div>

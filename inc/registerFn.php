@@ -5,15 +5,28 @@ require_once("./inc/pdo.php");
 function insertUser($tbUser)
 {
     global $pdo;
-    $rq = "INSERT INTO user(role,login,pwd,email)
+    //echo "Dumping POST insertUser".'<br>';
+    //var_dump($_POST);
+    $role = "role_user";
+    $login = $_POST['login'];
+    $pwd = $_POST['pwd'];
+    $email = $_POST['email'];
+
+    $rq = "INSERT INTO user(login,pwd,email,role)
             VALUES
-            (:role,:login,:pwd,:email)";
+                ( 
+                    '$login',
+                    '$pwd',
+                    '$email',
+                    '$role'
+                    )";
+            //(:role,:login,:pwd,:email)";
     $query = $pdo->prepare($rq);
-    $query->bindValue(':role', 'role_user', PDO::PARAM_STR);
-    $query->bindValue(':login', $tbUser['login'], PDO::PARAM_STR);
-    $query->bindValue(':pwd', $tbUser['pwd'], PDO::PARAM_STR);
-    $query->bindValue(':email', $tbUser['email'], PDO::PARAM_STR);
-    
+    // $query->bindValue(':role', 'role_user', PDO::PARAM_STR);
+    // $query->bindValue(':login', $tbUser['login'], PDO::PARAM_STR);
+    // $query->bindValue(':pwd', $tbUser['pwd'], PDO::PARAM_STR);
+    // $query->bindValue(':email', $tbUser['email'], PDO::PARAM_STR);
+    //var_dump($rq);
     $query->execute();
 }
 
@@ -31,10 +44,9 @@ function selectUserBy($field, $value, $type)
 function selectUserForLogin($login, $pwd)
 {
     global $pdo;
-    var_dump($login, $pwd);
-    $rq = "SELECT * FROM user WHERE login = :login";
+    
+    $rq = "SELECT * FROM user WHERE login = '$login'";
     $query = $pdo->prepare($rq);
-    $query->bindValue(':login', $login, PDO::PARAM_STR);
     $query->execute();
     $result = $query->fetch();
     if ($result) {
@@ -68,7 +80,7 @@ function protectUrl($role)
             break;
         case 'role_user':
             if (empty($_SESSION['role'])) {
-                header("Location:index.php");
+                header("Location:account.php");
                 die;
             }
             break;

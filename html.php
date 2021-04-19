@@ -1,5 +1,9 @@
 <?php
+// require_once("session.php");
+include("session.php");
+require_once("./inc/registerFn.php");
 include("header.php");
+initSession();
 ?>
 <div class="container">
     <div class="html-title no-gutters">

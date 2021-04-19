@@ -1,21 +1,25 @@
 <?php
-session_start();
-//$_SESSION['role'] = 'role_role_user';
+require_once("./inc/registerFn.php");
+require_once("session.php");
+include("header.php");
+//initSession();
+
+//session_start();
+
+//$_SESSION['role'] = 'role_user';
 //$_SESSION['login'] = 'weltrusten';
 //$_SESSION['role'] = 'anonymous';
 //$_SESSION['login'] = '';
-$_SESSION['role'] = '';
-$_SESSION['login'] = '';
-include("header.php");
+//$_SESSION['role'] = '';
+//$_SESSION['login'] = '';
+
 //include("home.php");
 ?>
 
 <main>
     <div class="container">
         <div class="row">
-
-            <div class="jumbotron col-12" id="jumbo">
-                <?php
+            <?php
                 if ($_SESSION['role'] === 'role_user' && !empty($_SESSION['login'])) {
                     echo "<h1 class='display-4'>Hello " . $_SESSION['login'] . "</h1>";
                 } else {
@@ -29,6 +33,8 @@ include("header.php");
                 <p class="lead">
                     <a class="btn btn-outline-primary btn-lg" id="espBtn" href="#" role="button">Voir les cheatsheets</a>
                 </p>
+            <div class="jumbotron col-12" id="jumbo">
+                
             </div>
         </div>
     </div>

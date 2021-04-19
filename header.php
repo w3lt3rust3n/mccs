@@ -1,8 +1,10 @@
 <?php
-session_start();
-
-
+    require_once("./inc/registerFn.php");
+    require_once("session.php");
+    initSession();
+    
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -38,16 +40,14 @@ session_start();
                                 <a class="nav-link text-primary" href="index.php">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <?php 
-                            if(!empty($_SESSION['role']) && $_SESSION['role'] === "role_user") { 
-                                echo "<li><a class='nav-link text-primary' href='html.php'>Cheatsheets</a></li>";
-                                echo "<li><a class='nav-link text-primary' href='css.php'>Mes cheatsheets</a></li>";
-                                echo "<li><a class='nav-link text-primary' href='javascript.php'>Mon compte</a></li>";
+                            if($_SESSION['role'] === "role_user") { 
+                                echo "<li><a class='nav-link text-primary' href='cheats.php'>Cheatsheets</a></li>";
+                                echo "<li><a class='nav-link text-primary' href='customcs.php'>Mes cheatsheets</a></li>";
+                                echo "<li><a class='nav-link text-primary' href='account.php'>Mon compte</a></li>";
+                                echo "<li><a class='nav-link text-primary' href='logout.php'>Se déconnecter</a></li>";
                             } else {
                                 echo "<li><a class='nav-link text-primary' href='login.php'>Se connecter</a></li>";
                                 echo "<li><a class='nav-link text-primary' href='registrer.php'>Créer un compte</a></li>";
-                                // if(!empty($_SESSION['role'])) {
-                                //     echo "<li><a class='nav-link text-primary' href='logout.php'>Se déconnecter</a></li>";
-                                // }
                             }
                             ?>
                         </ul>
