@@ -1,9 +1,6 @@
 <?php
-    include("session.php");
-    initSession();
-    echo "Log out...";
+    session_start();
     
     session_destroy();
     header("Location:index.php");
-    die();
-?>
+

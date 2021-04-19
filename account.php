@@ -1,11 +1,11 @@
-<?php 
-
+<?php
+session_start();
 require_once("./inc/registerFn.php");
-include("session.php");
-include("header.php");
-initSession();
+
+include("./inc/header.php");
+
 $role = $_SESSION['role'];
 $login = $_SESSION['login'];
 
 
-echo "Hello ". $login . '<br>';
+echo "Hello " . $login . '<br>';

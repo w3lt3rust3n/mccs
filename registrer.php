@@ -1,10 +1,10 @@
 <?php
-
+session_start();
 require_once("./inc/registerFn.php");
 //require_once("session.php");
-include("session.php");
-include("header.php");
-initSession();
+
+include("./inc/header.php");
+
 
 // je teste l'existance de données post
 $erreur = [];
@@ -21,10 +21,10 @@ if (!empty($_POST)) {
     if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         $erreur["email"] = "L'adresse email n'est pas valide'";
     }
-    
+
     if (selectUserBy("login", $_POST['login'], PDO::PARAM_STR)) {
         $erreur['login'] = "Ce login existe déjà";
-    } 
+    }
     if (selectUserBy("email", $_POST['email'], PDO::PARAM_STR)) {
         $erreur['email'] = "Cet email est déjà enregitré!";
     }
@@ -35,29 +35,29 @@ if (!empty($_POST)) {
         // mon utilisateur est bien enregistré
         // je rentre ses informations dans la $_SESSION
         $_SESSION['login'] = $_POST['login'];
+        $username = $_SESSION['login'];
         $_SESSION['role'] = "role_user";
-        header("Location:account.php");
-        die();
+        $userRole = $_SESSION['role'];
+        header("Location:account.php?login=$username&role=$userRole");
+        die;
     } else {
-        echo "DANGER"."<br>";
+        echo "DANGER" . "<br>";
     }
 }
 ?>
 <div id="formUser">
     <h1>Enregistrez-vous!</h1>
     <form class="formulaire" action="registrer.php" method="post">
-        <input type="text" name="login" id="login" placeholder="Login"
+        <input type="text" name="login" id="login" placeholder="Login" <?php
+                                                                        if (!empty($_POST['login']) && strlen($_POST['login']) > 0) {
+                                                                            echo "value='" . $_POST['login'] . "'";
+                                                                        } ?>>
         <?php
-        if(!empty($_POST['login']) && strlen($_POST['login'])>0){
-            echo "value='".$_POST['login']."'";
-            } ?>
-        >
-        <?php
-            if (array_key_exists('login', $erreur)) {
-                echo "<div class='inputError'>".$erreur['login']."</div>";
-            }
-            ?>
-        
+        if (array_key_exists('login', $erreur)) {
+            echo "<div class='inputError'>" . $erreur['login'] . "</div>";
+        }
+        ?>
+
         <div class="inputError"></div>
         <!-- 
             Bonus show hide password jQuery :(

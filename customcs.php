@@ -1,10 +1,7 @@
 <?php
-    
+    session_start();
     require_once("./inc/registerFn.php");
-    include("session.php");
-    include("header.php");
-    initSession();
-
-
+    include("./inc/header.php");
+    
     echo "<div>WORK IN PROGRESS custom cheatsheets</div>";
     ?>

@@ -7,9 +7,7 @@ function initSession()
     
     echo "Init session...<br>";
     if (session_status() == PHP_SESSION_NONE) {
-        echo "Starting session <br>";
-        session_start();
-        
+        echo "Starting session <br>";        
         print_r($test);
         $_SESSION['login'] = $test['login'];
         $_SESSION['role'] = $test['role'];

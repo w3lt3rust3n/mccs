@@ -1,9 +1,8 @@
 <?php
-//require_once("session.php");
-include("session.php");
+session_start();
+
 require_once("./inc/registerFn.php");
-include("header.php");
-//initSession();
+include("./inc/header.php");
 $erreur = [];
 
 if (!empty($_POST)) {
@@ -14,17 +13,23 @@ if (!empty($_POST)) {
 
     $login = $_POST['login'];
     var_dump("login -> " . $login);
+    $username = $_userLog['login'];
+    $userRole = $_userLog['role'];
+
+    var_dump($username);
+    var_dump($userRole);
     if (count($erreur) === 0) {
 
         $userLog = selectUserForLogin($_POST['login'], $_POST['pwd']);
         var_dump("userLog -> " . $userLog['role']);
         $test[] = $userLog;
+        print_r($test);
         if ($userLog) {
             $_SESSION['login'] = $userLog['login'];
             $_SESSION['role'] = $userLog['role'];
-            print_r($_SESSION);
-            header("Location:account.php");
-            exit();
+
+
+            header("Location:account.php?login=$username&role=$userRole");
         } else {
             echo "Vous êtes pas le bon utilisateur";
         }

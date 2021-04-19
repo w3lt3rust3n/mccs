@@ -15,8 +15,16 @@ body {
 .navbar-nav li {
     margin-right: 30px;
 }
-
+/*
 #jumbo {
+    background-image: url('../img/jumbo-img-one.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+*/
+
+#diapo {
     background-image: url('../img/jumbo-img-one.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -57,8 +65,9 @@ body {
 }
 
 #cards {
-    visibility: hidden;
+    /* Uncomment if needed visibility: hidden;*/
     background-color: #333333;
+    display: inline;
 }
 
 .mccs-footer {
