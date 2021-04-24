@@ -22,11 +22,7 @@ function insertUser($tbUser)
                     )";
             //(:role,:login,:pwd,:email)";
     $query = $pdo->prepare($rq);
-    // $query->bindValue(':role', 'role_user', PDO::PARAM_STR);
-    // $query->bindValue(':login', $tbUser['login'], PDO::PARAM_STR);
-    // $query->bindValue(':pwd', $tbUser['pwd'], PDO::PARAM_STR);
-    // $query->bindValue(':email', $tbUser['email'], PDO::PARAM_STR);
-    //var_dump($rq);
+    
     $query->execute();
 }
 

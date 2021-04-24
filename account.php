@@ -4,7 +4,7 @@ require_once("./inc/registerFn.php");
 
 include("./inc/header.php");
 
-$role = $_SESSION['role'];
+//$role = $_SESSION['role'];
 $login = $_SESSION['login'];
 
 

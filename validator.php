@@ -8,26 +8,10 @@ $erreur = [];
 
 // $_POST permet de stocker toutes les autres formes de données
 // envoyées par un formulaire (method="post")
-var_dump($_POST);
+
 if (!empty($_POST)) {
     // Gestion des données du POST
-    // la fonction verifInput va être partagée entre plusieurs formulaires : DRY!!!!
-    // je la partage sur fonctions.php
-    /* function verifInput($input, $txtErreur)
-    {
-        // pour pouvoir utiliser mon tableau d'erreur à l'interieur de ma fonction
-        // je le déclare en global
-        global $erreur;
-        // strlen me permet de verifier que ma chaine $input (string)
-        // contient bien au moins 1 caractère
-        if (strlen($_POST[$input]) > 0) {
-            // trim() supprime tous les caractères invisibles de ma chaine
-            return trim(strip_tags($_POST[$input]));
-        } else {
-            // j'ajoute une nouvelle erreur à mon tableau en cas de champ vide
-            $erreur[$input] = $txtErreur;
-        }
-    } */
+  
     $login = checkInput("regLoginInput", "Le champ nom d'utilisateur est vide");
     $pwd = checkInput("regPasswordInput", "Le champ Mot de passe est vide");
     $email = checkInput("regEmailInput", "Le champ email est vide");

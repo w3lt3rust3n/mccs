@@ -1,33 +1,36 @@
 <?php
 session_start();
 require_once("./inc/registerFn.php");
-//require_once("session.php");
-
 include("./inc/header.php");
 
 
 // je teste l'existance de données post
 $erreur = [];
 if (!empty($_POST)) {
-    var_dump($_POST);
     $_POST['login'] = verifInput("login", "Vous n'avez pas rempli le champ login.");
     $_POST['pwd'] = verifInput("pwd", "Vous n'avez pas rempli le champ pwd.");
     $_POST['pwd2'] = verifInput("pwd2", "Vous n'avez pas rempli le champ pwd2.");
+    
     if ($_POST['pwd'] !== $_POST['pwd2']) {
         $erreur["pwd2"] = "Les 2 passwords ne sont pas identiques";
     }
+
     $_POST['email'] = verifInput("email", "Vous n'avez pas rempli le champ email.");
-    // filter_var cf php.net ????
+    
     if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         $erreur["email"] = "L'adresse email n'est pas valide'";
     }
 
-    if (selectUserBy("login", $_POST['login'], PDO::PARAM_STR)) {
+    else if (selectUserBy("login", $_POST['login'], PDO::PARAM_STR)) {
         $erreur['login'] = "Ce login existe déjà";
     }
-    if (selectUserBy("email", $_POST['email'], PDO::PARAM_STR)) {
+    else if (selectUserBy("email", $_POST['email'], PDO::PARAM_STR)) {
         $erreur['email'] = "Cet email est déjà enregitré!";
     }
+    else {
+        echo "Nothing to say";
+    }
+    
     var_dump($erreur);
     if (count($erreur) === 0) {
         $_POST['pwd'] = password_hash($_POST['pwd'], PASSWORD_ARGON2ID);
@@ -45,7 +48,8 @@ if (!empty($_POST)) {
     }
 }
 ?>
-<div id="formUser">
+<div class="container">
+    <div id="formUser">
     <h1>Enregistrez-vous!</h1>
     <form class="formulaire" action="registrer.php" method="post">
         <input type="text" name="login" id="login" placeholder="Login" <?php
@@ -71,6 +75,7 @@ if (!empty($_POST)) {
         <div class="inputError"></div>
         <input type="submit" value="Envoyer">
     </form>
+            </div>
 </div>
 <?php
 include("footer.php");
