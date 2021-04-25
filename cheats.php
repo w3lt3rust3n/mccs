@@ -18,7 +18,7 @@ include("./inc/header.php");
                         </p>
                         <?php
                         if ($_SESSION['role'] === 'role_user') {
-                            echo "<a href='html.php' class='btn btn-primary'>Lire</a>";
+                            echo "<a href='./cheats/html.php' class='btn btn-primary'>Lire</a>";
                         } else {
                             echo "<a href='login.php' class='btn btn-primary'>Connectez-vous pour lire</a>";
                             echo "<p>Pas encore de compte ? <a href='registrer.php'>Cliquez ici</a> pour créer un compte.";
@@ -37,7 +37,7 @@ include("./inc/header.php");
                             faite pour vous !</p>
                         <?php
                         if ($_SESSION['role'] === 'role_user') {
-                            echo "<a href='html.php' class='btn btn-primary'>Lire</a>";
+                            echo "<a href='./cheats/html.php' class='btn btn-primary'>Lire</a>";
                         } else {
                             echo "<a href='login.php' class='btn btn-primary'>Connectez-vous pour lire</a>";
                             echo "<p>Pas encore de compte ? <a href='registrer.php'>Cliquez ici</a> pour créer un compte.";
@@ -57,7 +57,7 @@ include("./inc/header.php");
                             faite pour vous !</p>
                         <?php
                         if ($_SESSION['role'] === 'role_user') {
-                            echo "<a href='html.php' class='btn btn-primary'>Lire</a>";
+                            echo "<a href='./cheats/html.php' class='btn btn-primary'>Lire</a>";
                         } else {
                             echo "<a href='login.php' class='btn btn-primary'>Connectez-vous pour lire</a>";
                             echo "<p>Pas encore de compte ? <a href='registrer.php'>Cliquez ici</a> pour créer un compte.";
@@ -81,7 +81,7 @@ include("./inc/header.php");
                         faite pour vous !</p>
                     <?php
                     if ($_SESSION['role'] === 'role_user') {
-                        echo "<a href='html.php' class='btn btn-primary'>Lire</a>";
+                        echo "<a href='./cheats/html.php' class='btn btn-primary'>Lire</a>";
                     } else {
                         echo "<a href='login.php' class='btn btn-primary'>Connectez-vous pour lire</a>";
                         echo "<p>Pas encore de compte ? <a href='registrer.php'>Cliquez ici</a> pour créer un compte.";
@@ -101,7 +101,7 @@ include("./inc/header.php");
                         faite pour vous !</p>
                     <?php
                     if ($_SESSION['role'] === 'role_user') {
-                        echo "<a href='html.php' class='btn btn-primary'>Lire</a>";
+                        echo "<a href='./cheats/html.php' class='btn btn-primary'>Lire</a>";
                     } else {
                         echo "<a href='login.php' class='btn btn-primary'>Connectez-vous pour lire</a>";
                         echo "<p>Pas encore de compte ? <a href='registrer.php'>Cliquez ici</a> pour créer un compte.";
@@ -121,7 +121,7 @@ include("./inc/header.php");
                         faite pour vous !</p>
                     <?php
                     if ($_SESSION['role'] === 'role_user') {
-                        echo "<a href='html.php' class='btn btn-primary'>Lire</a>";
+                        echo "<a href='./cheats/html.php' class='btn btn-primary'>Lire</a>";
                     } else {
                         echo "<a href='login.php' class='btn btn-primary'>Connectez-vous pour lire</a>";
                         echo "<p>Pas encore de compte ? <a href='registrer.php'>Cliquez ici</a> pour créer un compte.";
@@ -141,7 +141,7 @@ include("./inc/header.php");
                         faite pour vous !</p>
                     <?php
                     if ($_SESSION['role'] === 'role_user') {
-                        echo "<a href='html.php' class='btn btn-primary'>Lire</a>";
+                        echo "<a href='./cheats/html.php' class='btn btn-primary'>Lire</a>";
                     } else {
                         echo "<a href='login.php' class='btn btn-primary'>Connectez-vous pour lire</a>";
                         echo "<p>Pas encore de compte ? <a href='registrer.php'>Cliquez ici</a> pour créer un compte.";
@@ -165,7 +165,7 @@ include("./inc/header.php");
                         faite pour vous !</p>
                     <?php
                     if ($_SESSION['role'] === 'role_user') {
-                        echo "<a href='html.php' class='btn btn-primary'>Lire</a>";
+                        echo "<a href='./cheats/html.php' class='btn btn-primary'>Lire</a>";
                     } else {
                         echo "<a href='login.php' class='btn btn-primary'>Connectez-vous pour lire</a>";
                         echo "<p>Pas encore de compte ? <a href='registrer.php'>Cliquez ici</a> pour créer un compte.";
@@ -184,7 +184,7 @@ include("./inc/header.php");
                         faite pour vous !</p>
                     <?php
                     if ($_SESSION['role'] === 'role_user') {
-                        echo "<a href='html.php' class='btn btn-primary'>Lire</a>";
+                        echo "<a href='./cheats/html.php' class='btn btn-primary'>Lire</a>";
                     } else {
                         echo "<a href='login.php' class='btn btn-primary'>Connectez-vous pour lire</a>";
                         echo "<p>Pas encore de compte ? <a href='registrer.php'>Cliquez ici</a> pour créer un compte.";
@@ -203,7 +203,7 @@ include("./inc/header.php");
                         faite pour vous !</p>
                     <?php
                     if ($_SESSION['role'] === 'role_user') {
-                        echo "<a href='html.php' class='btn btn-primary'>Lire</a>";
+                        echo "<a href='./cheats/html.php' class='btn btn-primary'>Lire</a>";
                     } else {
                         echo "<a href='login.php' class='btn btn-primary'>Connectez-vous pour lire</a>";
                         echo "<p>Pas encore de compte ? <a href='registrer.php'>Cliquez ici</a> pour créer un compte.";

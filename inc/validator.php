@@ -1,7 +1,7 @@
 <?php
 // Pour executer des requetes mysql j'ai besoin dans ce fichier d'appeler ma connexion à la bdd
-require_once('./inc/pdo.php');
-require_once('./inc/registerFn.php');
+require_once('pdo.php');
+require_once('registerFn.php');
 //phpinfo(); permet de connaitre les spec du serveur ex:taille maximal des fichiers uploadés
 $erreur = [];
 // $_FILES permet de stocker les fichiers uploadés (input type="file")
@@ -11,7 +11,7 @@ $erreur = [];
 
 if (!empty($_POST)) {
     // Gestion des données du POST
-  
+
     $login = checkInput("regLoginInput", "Le champ nom d'utilisateur est vide");
     $pwd = checkInput("regPasswordInput", "Le champ Mot de passe est vide");
     $email = checkInput("regEmailInput", "Le champ email est vide");

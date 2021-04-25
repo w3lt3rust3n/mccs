@@ -1,11 +1,11 @@
 <?php
-    require_once("./inc/registerFn.php");
+require_once("./inc/registerFn.php");
 
-    if(empty($_SESSION)) {
-      $_SESSION['role'] = "role_guest";
-      $_SESSION['login'] = "guest";
-      //var_dump($_SESSION);
-     }
+if (empty($_SESSION)) {
+    $_SESSION['role'] = "role_guest";
+    $_SESSION['login'] = "guest";
+    //var_dump($_SESSION);
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +40,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <?php
-                            if($_SESSION['role'] === "role_user") {
+                            if ($_SESSION['role'] === "role_user") {
                                 echo "<li><a class='nav-link text-primary' href='cheats.php'>Cheatsheets</a></li>";
                                 echo "<li><a class='nav-link text-primary' href='customcs.php'>Mes cheatsheets</a></li>";
                                 echo "<li><a class='nav-link text-primary' href='account.php'>Mon compte</a></li>";
@@ -53,8 +53,8 @@
                         </ul>
                     </div>
                     <?php
-                    if(!empty($_SESSION['login'])) {
-                        echo "".$_SESSION['login'];
+                    if (!empty($_SESSION['login'])) {
+                        echo "" . $_SESSION['login'];
                     } else {
                         echo "Can't get login info.";
                     }

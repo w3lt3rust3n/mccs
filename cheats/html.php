@@ -5,12 +5,12 @@ require_once("./inc/registerFn.php");
 include("./inc/header.php");
 
 ?>
-<div class="container">
-    <div class="html-title no-gutters">
+<div class="container card border-primary mb-3" style="max-width: 20rem;">">
+    <div class="html-title no-gutters card-header">
         <h1 class="lang-title">HTML - HyperText Markup Language</h1>
         <hr>
-        <div class="html-chapter no-gutters">
-            <h3>Liste des balises</h3>
+        <div class="html-chapter no-gutters card-body">
+            <h3 class="card-title">Liste des balises</h3>
         </div>
         <div class="html-container col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no-gutters" id="html">
             <div class="content col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">

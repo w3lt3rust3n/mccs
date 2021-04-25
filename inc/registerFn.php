@@ -20,9 +20,9 @@ function insertUser($tbUser)
                     '$email',
                     '$role'
                     )";
-            //(:role,:login,:pwd,:email)";
+    //(:role,:login,:pwd,:email)";
     $query = $pdo->prepare($rq);
-    
+
     $query->execute();
 }
 
@@ -40,7 +40,7 @@ function selectUserBy($field, $value, $type)
 function selectUserForLogin($login, $pwd)
 {
     global $pdo;
-    
+
     $rq = "SELECT * FROM user WHERE login = '$login'";
     $query = $pdo->prepare($rq);
     $query->execute();
@@ -86,7 +86,7 @@ function protectUrl($role)
     }
 }
 
-function verifInput($input, $txtErreur)
+function checkInput($input, $txtErreur)
 {
     // pour pouvoir utiliser mon tableau d'erreur à l'interieur de ma fonction
     // je le déclare en global

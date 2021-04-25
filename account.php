@@ -7,5 +7,4 @@ include("./inc/header.php");
 //$role = $_SESSION['role'];
 $login = $_SESSION['login'];
 
-
 echo "Hello " . $login . '<br>';
